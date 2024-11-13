@@ -1,3 +1,1 @@
-exports.hello = function(req, res) {
-    res.send('Hello!!');
-}
+exports.createProduct = (req, res) => {};
