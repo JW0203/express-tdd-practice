@@ -19,17 +19,13 @@ describe('Products Controller', ()=>{
     it('Should have a createdProduct function', ()=>{
         expect(typeof productController.createProduct).toBe('function');
     })
-    it ('Should call ProductModel.create', () => {
-        let req = httpMocks.createRequest();
-        let res = httpMocks.createResponse();
-        let next = null;
-        req.body = newProduct;
-        productController.createProduct(req, res, next);
+    it ('Should call ProductModel.create', async () => {
+        await productController.createProduct(req, res, next);
         expect(productModel.create).toBeCalled();
     })
 
-    it('Should return 201 response code', () => {
-        productController.createProduct(req, res, next);
+    it('Should return 201 response code', async () => {
+        await productController.createProduct(req, res, next);
         expect(res.statusCode).toBe(201);
         expect(res._isEndCalled).toBeTruthy();
     })
