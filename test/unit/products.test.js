@@ -1,6 +1,8 @@
 const productController = require("../../controller/products");
 const productModel = require("../../models/Product");
 
+productModel.create = jest.fn();
+
 describe('Products Controller', ()=>{
     it('Should have a createdProduct function', ()=>{
         expect(typeof productController.createProduct).toBe('function');
@@ -8,6 +10,5 @@ describe('Products Controller', ()=>{
     it ('Should call ProductModel.create', () => {
         productController.createProduct();
         expect(productModel.create).toBeCalled();
-
     })
 })
